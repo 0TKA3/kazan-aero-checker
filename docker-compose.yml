@@ -1,0 +1,9 @@
+services:
+  aero:
+    build: .
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      PORT: 3000
+      SERVE_STATIC: "true"
+    restart: unless-stopped

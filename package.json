@@ -4,10 +4,21 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dev": "bun run index.ts"
+		"dev": "concurrently -n server,web -c blue,green \"bun run dev:server\" \"bun run dev:web\"",
+		"dev:server": "bun run --watch src/server/index.ts",
+		"dev:web": "cd web && bun run dev",
+		"cli": "bun run src/cli/index.ts",
+		"build": "cd web && bun run build",
+		"start": "bun run src/server/index.ts",
+		"start:prod": "SERVE_STATIC=true bun run src/server/index.ts",
+		"docker:build": "docker compose build",
+		"docker:up": "docker compose up -d",
+		"docker:down": "docker compose down"
 	},
 	"devDependencies": {
-		"@types/bun": "latest"
+		"@types/bun": "latest",
+		"@types/node": "^26.0.0",
+		"concurrently": "^9.2.1"
 	},
 	"peerDependencies": {
 		"typescript": "^5"

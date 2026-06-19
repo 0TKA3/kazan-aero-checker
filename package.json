@@ -1,0 +1,19 @@
+{
+	"name": "aero",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun run index.ts"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@types/selenium-webdriver": "^4.35.5",
+		"selenium-webdriver": "^4.41.0"
+	}
+}

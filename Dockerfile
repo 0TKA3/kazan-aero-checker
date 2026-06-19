@@ -8,7 +8,8 @@ COPY web/package.json web/bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY web/ ./
-RUN bun run build
+# tsc -b требует много RAM; на слабых VPS падает с code 137 (OOM)
+RUN bun run build:docker
 
 FROM oven/bun:1.3-slim AS production
 
